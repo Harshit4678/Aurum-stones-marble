@@ -1,11 +1,10 @@
 import dotenv from "dotenv";
-// Load environment variables at very top
 
 import express from "express";
 import cors from "cors";
 
 import connectDB from "./config/db.js";
-import "./config/cloudinary.js"; // just importing to initialize cloudinary config
+import "./config/cloudinary.js";
 
 import inquiryRoutes from "./routes/inquiryRoutes.js";
 import productRoutes from "./routes/productRoutes.js";
@@ -14,16 +13,7 @@ import adminRoutes from "./routes/adminRoutes.js";
 import productTypeRoutes from "./routes/productTypesRoutes.js";
 
 dotenv.config();
-// // Debug ENV variables (only in dev mode)
-// if (process.env.NODE_ENV !== "production") {
-//   console.log("ENV DEBUG:", {
-//     CLOUDINARY_CLOUD_NAME: process.env.CLOUDINARY_CLOUD_NAME,
-//     CLOUDINARY_API_KEY: process.env.CLOUDINARY_API_KEY,
-//     CLOUDINARY_API_SECRET: process.env.CLOUDINARY_API_SECRET ? "***hidden***" : "NOT SET",
-//   });
-// }
 
-// Connect to MongoDB
 connectDB();
 
 // Initialize express app
@@ -33,6 +23,7 @@ const app = express();
 const allowedOrigins = [
   "http://localhost:5173",
   "http://localhost:3000",
+  "https://aurum-stones-admin-panel.vercel.app",
   process.env.FRONTEND_URL, // in case you deploy
 ];
 
